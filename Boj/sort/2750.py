@@ -74,7 +74,7 @@ def bubble_sort(array):
                 array[j], array[j + 1] = array[j + 1], array[j]
 
     # for x in range(n):
-    #     print(array[x])
+    #     print(array_fir_dimension[x])
 
 # ---------------------------------- #
 '''
@@ -99,7 +99,7 @@ def select_sort(array):
         # 4. 찾은 진짜 최솟값(min_index)과 현재 자리(i)를 맞바꾼다 (Swap)
         array[i], array[min_index] = array[min_index], array[i]
 
-    # for x in array:
+    # for x in array_fir_dimension:
     #     print(x)
 
 if __name__ == "__main__":
