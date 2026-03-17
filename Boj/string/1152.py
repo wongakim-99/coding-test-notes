@@ -19,14 +19,35 @@ import sys
 from typing import List
 
 # 1. 내 풀이
-def solution() -> int:
+def solution1() -> int:
     # 1. 문자열 입력받기
     data: List[str] = sys.stdin.readline().split()
-
     result: int = int(len(data))
 
     return result
 
+
+# 2. 다른 추가된 타입힌트 외 제약사항 : 예외처리
+def solution2() -> int:
+    try:
+        # 1. 입력시도
+        data: List[str] = sys.stdin.readline().split()
+
+        # 2. 데이터가 아예 없는 경우에 대한 예외 처리 (Optional)
+        if not data:
+            return 0
+
+        return len(data)
+
+    except EOFError:
+        # 입력이 갑자기 끊기거나 파일 끝에 도달했을 때
+        return 0
+    except Exception as e:
+        # 그 외 예상치 못한 모든 에러 처리
+        print(f"Unexpected error : {e}")
+        return 0
+
+
 if __name__ == "__main__":
-    word_len = solution()
+    word_len = solution2()
     print(word_len)
