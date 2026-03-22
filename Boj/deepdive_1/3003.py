@@ -16,6 +16,8 @@
 
 import sys
 
+from typing import List
+
 # 1. 내 풀이
 def solution() -> list:
     # 원래 있어야 하는 말의 갯수 (정답지)
@@ -35,5 +37,33 @@ def solution() -> list:
 
     return result
 
+
+# 2. 조금 더 간결하게 리팩토링(위의 경우는 너무 투머치)
+def solution2() -> list:
+    # 원래 있어야 하는 말의 갯수
+    pieces: List[int] = [1, 1, 2, 2, 2, 8]   # 0번째 인덱스부터 순서대로 킹, 퀸, 룩, 비숍, 나이트, 폰
+
+    # 현재 흰색 말 체스 개수
+    numbers: List[int] = list(map(int, sys.stdin.readline().split()))
+
+    # 결과 값 저장할 리스트
+    result: List[int] = []
+
+    for i in range(len(numbers)):
+        result.append(pieces[i] - numbers[i])
+
+    return result
+
+
+# 3. 리스트 컴프리헨션 방식 (이 정도까지는 생각할 수 있어야 한다)
+def solution3() -> list:
+    pieces = [1, 1, 2, 2, 2, 8]
+    numbers = list(map(int, sys.stdin.readline().split()))
+
+    # 정답(p)에서 입력값(n)을 뺀 리스트를 만든다
+    result: List[int] = [p - n for p, n in zip(pieces, numbers)]
+
+    return result
+
 if __name__ == "__main__":
-    print(*solution())
+    print(solution3())
